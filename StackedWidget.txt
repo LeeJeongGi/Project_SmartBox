@@ -1,0 +1,83 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import MessageBoxes
+
+class UserMenu(object):
+    def setupUi(self, UserMenuForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        UserMenuForm.setObjectName("UserMenuForm")
+        UserMenuForm.resize(800, 480)
+        self.lbl_user = QtWidgets.QLabel(UserMenuForm)
+        self.lbl_user.setGeometry(QtCore.QRect(0, 0, 800, 131))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_user.setFont(font)
+        self.lbl_user.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_user.setObjectName("lbl_user")
+        self.btn_modify = QtWidgets.QPushButton(UserMenuForm)
+        self.btn_modify.setGeometry(QtCore.QRect(413, 140, 341, 141))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_modify.setFont(font)
+        self.btn_modify.setObjectName("btn_modify")
+        self.btn_back = QtWidgets.QPushButton(UserMenuForm)
+        self.btn_back.setGeometry(QtCore.QRect(413, 300, 341, 141))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.btn_sendback = QtWidgets.QPushButton(UserMenuForm)
+        self.btn_sendback.setGeometry(QtCore.QRect(43, 300, 341, 141))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_sendback.setFont(font)
+        self.btn_sendback.setObjectName("btn_sendback")
+        self.btn_receive = QtWidgets.QPushButton(UserMenuForm)
+        self.btn_receive.setGeometry(QtCore.QRect(43, 140, 341, 141))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_receive.setFont(font)
+        self.btn_receive.setObjectName("btn_receive")
+        self.btn_method_setup()
+        self.retranslateUi(UserMenuForm)
+        QtCore.QMetaObject.connectSlotsByName(UserMenuForm)
+
+    def retranslateUi(self, UserMenuForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_user.setText(_translate("UserMenuForm", "default님, 안녕하세요."))
+        self.btn_modify.setText(_translate("UserMenuForm", "정보 변경"))
+        self.btn_back.setText(_translate("UserMenuForm", "뒤로"))
+        self.btn_sendback.setText(_translate("UserMenuForm", "반송하기"))
+        self.btn_receive.setText(_translate("UserMenuForm", "수령하기"))
+
+    def btn_method_setup(self):
+        self.btn_back.clicked.connect(self.back)
+        self.btn_receive.clicked.connect(self.receive)
+        self.btn_modify.clicked.connect(self.modify)
+        self.btn_sendback.clicked.connect(self.sendback)
+
+    def receive(self):
+        if (
+        self.main_stacked_widget.find_box_by_owner(self.main_stacked_widget.get_user_id(self.main_stacked_widget.login_index)) == -1 ):
+            MessageBoxes.warning_message_box("경고", "보관중인 물품이 없습니다.")
+        else:
+            self.main_stacked_widget.Receive_Ui.to_receive()
+
+    def sendback(self):
+        self.main_stacked_widget.SelectBox_Ui.to_select_box()
+
+    def modify(self):
+        self.main_stacked_widget.ModifyUser_Ui.to_modify(self.main_stacked_widget.login_index)
+
+    def back(self):
+        self.main_stacked_widget.logout()
+
+    def to_user_menu(self):
+        self.lbl_user.setText("{0}님, 안녕하세 요.".format(self.main_stacked_widget.get_user_id(self.main_stacked_widget.login_index)))
+        self.main_stacked_widget.setCurrentIndex(self.page_index)

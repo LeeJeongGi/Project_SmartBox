@@ -1,0 +1,366 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import ClickableLineEdit
+import MessageBoxes
+
+class ModifyUser(object):
+    def setupUi(self, ModifyUserForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        self.le2write = 1
+        self.index2modify = -1
+        ModifyUserForm.setObjectName("ModifyUserForm")
+        ModifyUserForm.resize(800, 480)
+        self.btn_0 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_0.setGeometry(QtCore.QRect(567, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_0.setFont(font)
+        self.btn_0.setObjectName("btn_0")
+        self.btn_1 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_1.setGeometry(QtCore.QRect(465, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_1.setFont(font)
+        self.btn_1.setObjectName("btn_1")
+        self.btn_2 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_2.setGeometry(QtCore.QRect(567, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_2.setFont(font)
+        self.btn_2.setObjectName("btn_2")
+        self.btn_3 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_3.setGeometry(QtCore.QRect(669, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_3.setFont(font)
+        self.btn_3.setObjectName("btn_3")
+        self.btn_4 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_4.setGeometry(QtCore.QRect(465, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_4.setFont(font)
+        self.btn_4.setObjectName("btn_4")
+        self.btn_5 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_5.setGeometry(QtCore.QRect(567, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_5.setFont(font)
+        self.btn_5.setObjectName("btn_5")
+        self.btn_6 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_6.setGeometry(QtCore.QRect(669, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_6.setFont(font)
+        self.btn_6.setObjectName("btn_6")
+        self.btn_7 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_7.setGeometry(QtCore.QRect(465, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_7.setFont(font)
+        self.btn_7.setObjectName("btn_7")
+        self.btn_8 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_8.setGeometry(QtCore.QRect(567, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_8.setFont(font)
+        self.btn_8.setObjectName("btn_8")
+        self.btn_9 = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_9.setGeometry(QtCore.QRect(669, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_9.setFont(font)
+        self.btn_9.setObjectName("btn_9")
+        self.btn_erase_one = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_erase_one.setGeometry(QtCore.QRect(465, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_one.setFont(font)
+        self.btn_erase_one.setObjectName("btn_erase_one")
+        self.btn_erase_all = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_erase_all.setGeometry(QtCore.QRect(669, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_all.setFont(font)
+        self.btn_erase_all.setObjectName("btn_erase_all")
+        self.lbl_modify_user = QtWidgets.QLabel(ModifyUserForm)
+        self.lbl_modify_user.setGeometry(QtCore.QRect(50, 42, 371, 81))
+        font = QtGui.QFont()
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_modify_user.setFont(font)
+        self.lbl_modify_user.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_modify_user.setObjectName("lbl_modify_user")
+        self.lbl_password = QtWidgets.QLabel(ModifyUserForm)
+        self.lbl_password.setGeometry(QtCore.QRect(47, 190, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_password.setFont(font)
+        self.lbl_password.setObjectName("lbl_password")
+        self.le_password = ClickableLineEdit.ClickableLineEdit(ModifyUserForm)
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        self.le_password.setFont(font)
+        self.le_password.setGeometry(QtCore.QRect(167, 190, 252, 40))
+        self.le_password.setObjectName("le_password")
+        self.lbl_user_id = QtWidgets.QLabel(ModifyUserForm)
+        self.lbl_user_id.setGeometry(QtCore.QRect(47, 134, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_user_id.setFont(font)
+        self.lbl_user_id.setObjectName("lbl_user_id")
+        self.le_number = ClickableLineEdit.ClickableLineEdit(ModifyUserForm)
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        self.le_number.setFont(font)
+        self.le_number.setGeometry(QtCore.QRect(167, 298, 252, 40))
+        self.le_number.setObjectName("le_number")
+        self.lbl_number = QtWidgets.QLabel(ModifyUserForm)
+        self.lbl_number.setGeometry(QtCore.QRect(47, 298, 108, 40))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_number.setFont(font)
+        self.lbl_number.setObjectName("lbl_number")
+        self.btn_okay = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_okay.setGeometry(QtCore.QRect(47, 364, 161, 81))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(50)
+        self.btn_okay.setFont(font)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setPointSize(20)
+        self.btn_okay.setFont(font)
+        self.btn_okay.setObjectName("btn_okay")
+        self.btn_cancel = QtWidgets.QPushButton(ModifyUserForm)
+        self.btn_cancel.setGeometry(QtCore.QRect(260, 364, 161, 81))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(50)
+        self.btn_cancel.setFont(font)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.btn_cancel.setFont(font)
+        self.btn_cancel.setObjectName("btn_cancel")
+        self.le_passconfirm = ClickableLineEdit.ClickableLineEdit(ModifyUserForm)
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.le_passconfirm.setFont(font)
+        self.le_passconfirm.setGeometry(QtCore.QRect(167, 244, 252, 40))
+        self.le_passconfirm.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.le_passconfirm.setObjectName("le_passconfirm")
+        self.lbl_password_confirm = QtWidgets.QLabel(ModifyUserForm)
+        self.lbl_password_confirm.setGeometry(QtCore.QRect(47, 244, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_password_confirm.setFont(font)
+        self.lbl_password_confirm.setObjectName("lbl_password_confirm")
+        self.lbl_loaded_user = QtWidgets.QLabel(ModifyUserForm)
+        self.lbl_loaded_user.setGeometry(QtCore.QRect(167, 134, 252, 41))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        font.setBold(True)
+        font.setWeight(50)
+        self.lbl_loaded_user.setFont(font)
+        self.lbl_loaded_user.setMidLineWidth(0)
+        self.lbl_loaded_user.setTextFormat(QtCore.Qt.AutoText)
+        self.lbl_loaded_user.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.lbl_loaded_user.setObjectName("lbl_loaded_user")
+        self.btn_method_setup()
+        self.retranslateUi(ModifyUserForm)
+        QtCore.QMetaObject.connectSlotsByName(ModifyUserForm)
+
+    def retranslateUi(self, ModifyUserForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.btn_0.setText(_translate("ModifyUserForm", "0"))
+        self.btn_3.setText(_translate("ModifyUserForm", "3"))
+        self.btn_4.setText(_translate("ModifyUserForm", "4"))
+        self.btn_1.setText(_translate("ModifyUserForm", "1"))
+        self.btn_2.setText(_translate("ModifyUserForm", "2"))
+        self.btn_7.setText(_translate("ModifyUserForm", "7"))
+        self.btn_6.setText(_translate("ModifyUserForm", "6"))
+        self.btn_erase_one.setText(_translate("ModifyUserForm", "<-"))
+        self.btn_erase_all.setText(_translate("ModifyUserForm", "C"))
+        self.btn_8.setText(_translate("ModifyUserForm", "8"))
+        self.btn_9.setText(_translate("ModifyUserForm", "9"))
+        self.btn_5.setText(_translate("ModifyUserForm", "5"))
+        self.lbl_modify_user.setText(_translate("ModifyUserForm", "개인정보 수정"))
+        self.lbl_password.setText(_translate("ModifyUserForm", "비밀번호"))
+        self.lbl_user_id.setText(_translate("ModifyUserForm", "사용자 ID"))
+        self.lbl_number.setText(_translate("ModifyUserForm", "연락처"))
+        self.btn_okay.setText(_translate("ModifyUserForm", "확인"))
+        self.btn_cancel.setText(_translate("ModifyUserForm", "취소"))
+        self.lbl_password_confirm.setText(_translate("ModifyUserForm", "비밀번호 확인"))
+        self.lbl_loaded_user.setText(_translate("ModifyUserForm", "default"))
+
+    def btn_method_setup(self):
+        self.btn_1.clicked.connect(self.btn_1_clicked)
+        self.btn_2.clicked.connect(self.btn_2_clicked)
+        self.btn_3.clicked.connect(self.btn_3_clicked)
+        self.btn_4.clicked.connect(self.btn_4_clicked)
+        self.btn_5.clicked.connect(self.btn_5_clicked)
+        self.btn_6.clicked.connect(self.btn_6_clicked)
+        self.btn_7.clicked.connect(self.btn_7_clicked)
+        self.btn_8.clicked.connect(self.btn_8_clicked)
+        self.btn_9.clicked.connect(self.btn_9_clicked)
+        self.btn_0.clicked.connect(self.btn_0_clicked)
+        self.btn_erase_one.clicked.connect(self.btn_erase_one_clicked)
+        self.btn_erase_all.clicked.connect(self.btn_erase_all_clicked)
+        self.btn_okay.clicked.connect(self.btn_okay_clicked)
+        self.btn_cancel.clicked.connect(self.btn_cancel_clicked)
+        self.le_password.clicked.connect(self.set_write_pass)
+        self.le_passconfirm.clicked.connect(self.set_write_passconfirm)
+        self.le_number.clicked.connect(self.set_write_number)
+
+    def set_write_pass(self):
+        self.le2write = 1
+
+    def set_write_passconfirm(self):
+        self.le2write = 2
+
+    def set_write_number(self):
+        self.le2write = 3
+
+    def btn_1_clicked(self):
+        self.btn_process(1)
+
+    def btn_2_clicked(self):
+        self.btn_process(2)
+
+    def btn_3_clicked(self):
+        self.btn_process(3)
+
+    def btn_4_clicked(self):
+        self.btn_process(4)
+
+    def btn_5_clicked(self):
+        self.btn_process(5)
+
+    def btn_6_clicked(self):
+        self.btn_process(6)
+
+    def btn_7_clicked(self):
+        self.btn_process(7)
+
+    def btn_8_clicked(self):
+        self.btn_process(8)
+
+    def btn_9_clicked(self):
+        self.btn_process(9)
+
+    def btn_erase_one_clicked(self):
+        self.btn_process(-1)
+
+    def btn_0_clicked(self):
+        self.btn_process(0)
+
+    def btn_erase_all_clicked(self):
+        self.btn_process(-2)
+
+    def btn_okay_clicked(self):
+        self.btn_process(999)
+
+    def btn_cancel_clicked(self):
+        self.btn_process(-999)
+
+    def btn_process(self, num):
+        if (num == 999):
+            self.okay_process()
+
+        elif (num == -999):
+            self.back_to_menu()
+        elif (num == -1):
+            if (self.le2write == 1):
+                self.le_password.backspace()
+            elif (self.le2write == 2):
+                self.le_passconfirm.backspace()
+            elif (self.le2write == 3):
+                self.le_number.backspace()
+            else:
+                pass
+
+        elif (num == -2):
+            if (self.le2write == 1):
+                self.le_password.clear()
+            elif (self.le2write == 2):
+                self.le_passconfirm.clear()
+            elif (self.le2write == 3):
+                self.le_number.clear()
+            else:
+                pass
+
+        else:
+            if (self.le2write == 1):
+                self.le_password.addText(num)
+                self.le_password.setFocus()
+            elif (self.le2write == 2):
+                self.le_passconfirm.addText(num)
+                self.le_passconfirm.setFocus()
+            elif (self.le2write == 3):
+                self.le_number.addText(num)
+                self.le_number.setFocus()
+            else:
+                pass
+
+    def okay_process(self):
+        if (self.le_password.text() == ""):
+            MessageBoxes.warning_message_box("비밀번호 오류", "비밀번호를 입력하세요")
+        elif (self.le_number.text() == ""):
+            MessageBoxes.warning_message_box("연락처 오류", "연락처를 입력하세요")
+        elif (self.le_password.text() != self.le_passconfirm.text()):
+            MessageBoxes.warning_message_box("비밀번호 오류", "비밀번호가 일치하지 않습니다")
+        else:
+            self.main_stacked_widget.set_password(self.index2modify, self.le_passconfirm.text())
+            self.main_stacked_widget.set_number(self.index2modify, self.le_number.text())
+            self.main_stacked_widget.update_user()
+            MessageBoxes.message_box("확인", "정보가 수정되었습니다.")
+            self.back_to_menu()
+
+    def back_to_menu(self):
+        self.clear_le()
+        id = self.main_stacked_widget.get_user_id(self.main_stacked_widget.login_index)
+        if (id == "999"):
+            self.main_stacked_widget.ManageUser_Ui.to_manage_user()
+        else:
+            self.main_stacked_widget.UserMenu_Ui.to_user_menu()
+
+    def clear_le(self):
+        self.le_password.clear()
+        self.le_passconfirm.clear()
+        self.le_number.clear()
+        self.set_write_pass()
+
+    def to_modify(self, index2modify):
+        self.index2modify = index2modify
+        self.lbl_loaded_user.setText("{0}".format(self.main_stacked_widget.get_user_id(self.index2modify)))
+        self.le_number.setText("{0}".format(self.main_stacked_widget.get_number(self.index2modify)))
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+

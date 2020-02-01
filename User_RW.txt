@@ -1,0 +1,10 @@
+import json
+
+def read_user():
+    with open("UserData.json", 'r') as Users:
+        user_data = json.load(Users)
+        return user_data
+
+def write_user(user_data):
+    with open("UserData.json", 'w') as Users:
+        json.dump(user_data, Users)

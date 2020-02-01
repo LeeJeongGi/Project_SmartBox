@@ -1,0 +1,82 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import MessageBoxes
+
+class SelectBox(object):
+    def setupUi(self, SelectBoxForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        SelectBoxForm.setObjectName("SelectBoxForm")
+        SelectBoxForm.resize(800, 480)
+        self.lbl_title = QtWidgets.QLabel(SelectBoxForm)
+        self.lbl_title.setGeometry(QtCore.QRect(0, 0, 800, 131))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_title.setFont(font)
+        self.lbl_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_title.setObjectName("lbl_title")
+        self.btn_select = QtWidgets.QPushButton(SelectBoxForm)
+        self.btn_select.setGeometry(QtCore.QRect(624, 140, 140, 140))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(15)
+        self.btn_select.setFont(font)
+        self.btn_select.setObjectName("btn_okay")
+        self.btn_back = QtWidgets.QPushButton(SelectBoxForm)
+        self.btn_back.setGeometry(QtCore.QRect(624, 301, 140, 140))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(15)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.list_box = QtWidgets.QListWidget(SelectBoxForm)
+        self.list_box.setObjectName("list_box")
+        self.list_box.setGeometry(QtCore.QRect(40, 140, 551, 301))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.list_box.setFont(font)
+
+        self.btn_method_setup()
+        self.retranslateUi(SelectBoxForm)
+        QtCore.QMetaObject.connectSlotsByName(SelectBoxForm)
+
+    def retranslateUi(self, SelectBoxForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_title.setText(_translate("SelectBoxForm", "보관함을 선택해주세요"))
+        self.btn_select.setText(_translate("SelectBoxForm", "보관"))
+        self.btn_back.setText(_translate("SelectBoxForm", "뒤로"))
+
+    def btn_method_setup(self):
+        self.btn_select.clicked.connect(self.select)
+        self.btn_back.clicked.connect(self.back)
+
+    def back(self):
+        if (self.main_stacked_widget.login_driver == ""):
+            self.main_stacked_widget.UserMenu_Ui.to_user_menu()
+        else:
+            self.main_stacked_widget.DriverMenu_Ui.to_driver_menu()
+
+    def select(self):
+        sel_box_row = self.list_box.currentRow()
+        if (sel_box_row >= 0):
+            box2open = self.list_box.currentItem().text()
+            if (self.main_stacked_widget.login_driver == ""):
+                self.main_stacked_widget.ReceiverNum_Ui.to_receiver_num(box2open, 2)
+            else:
+                self.main_stacked_widget.ReceiverNum_Ui.to_receiver_num(box2open, 1)
+        else:
+            MessageBoxes.warning_message_box("경고", "보관함을 선택해주세요.")
+
+    def list_boxes(self):
+        for i in range(len(self.main_stacked_widget.box_list)):
+            if (self.main_stacked_widget.get_owner(i) == ""):
+                self.list_box.addItem(self.main_stacked_widget.get_box_num(i))
+            else:
+                pass
+
+    def to_select_box(self):
+        self.list_box.clear()
+        self.list_boxes()
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+        

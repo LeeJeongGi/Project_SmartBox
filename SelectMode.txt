@@ -1,0 +1,70 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class SelectMode(object):
+    def setupUi(self, SelectMode, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+
+        SelectMode.setObjectName("SelectMode")
+        SelectMode.resize(800, 480)
+        self.lbl_title = QtWidgets.QLabel(SelectMode)
+        self.lbl_title.setGeometry(QtCore.QRect(0, 0, 800, 131))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_title.setFont(font)
+        self.lbl_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_title.setObjectName("lbl_title")
+        self.btn_driver = QtWidgets.QPushButton(SelectMode)
+        self.btn_driver.setGeometry(QtCore.QRect(40, 120, 350, 300))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_driver.setFont(font)
+        self.btn_driver.setObjectName("btn_driver")
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_user = QtWidgets.QPushButton(SelectMode)
+        self.btn_user.setGeometry(QtCore.QRect(410, 120, 350, 300))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_user.setFont(font)
+        self.btn_user.setAutoFillBackground(False)
+        self.btn_user.setStyleSheet("")
+        self.btn_user.setObjectName("btn_user")
+        self.label = QtWidgets.QLabel(SelectMode)
+        font = QtGui.QFont()
+        font.setFamily("새굴림")
+        font.setPointSize(15)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label.setGeometry(QtCore.QRect(540, 430, 230, 30))
+
+        self.btn_method_setup()
+        self.retranslateUi(SelectMode)
+        QtCore.QMetaObject.connectSlotsByName(SelectMode)
+
+    def retranslateUi(self, SelectMode):
+        _translate = QtCore.QCoreApplication.translate
+        SelectMode.setWindowTitle(_translate("SelectMode", "SelectMode"))
+        self.lbl_title.setText(_translate("SelectMode", "공주대학교 무인택배함"))
+        self.btn_driver.setText(_translate("SelectMode", "집배원"))
+        self.btn_user.setText(_translate("SelectMode", "사용자"))
+        self.label.setText(_translate("SelectMode", "이용문의 : 01037687232"))
+
+    def btn_method_setup(self):
+        self.btn_driver.clicked.connect(self.driver)
+        self.btn_user.clicked.connect(self.user)
+
+    def user(self):
+        self.main_stacked_widget.Login_Ui.to_login()
+
+    def driver(self):
+        self.main_stacked_widget.DriverVerify_Ui.to_driver_verify()

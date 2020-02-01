@@ -1,0 +1,317 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import ClickableLineEdit
+
+class Login(object):
+    def setupUi(self, LoginForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        LoginForm.setObjectName("LoginForm")
+        LoginForm.resize(800, 480)
+        self.btn_back = QtWidgets.QPushButton(LoginForm)
+        self.btn_back.setGeometry(QtCore.QRect(259, 353, 161, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.btn_9 = QtWidgets.QPushButton(LoginForm)
+        self.btn_9.setGeometry(QtCore.QRect(669, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_9.setFont(font)
+        self.btn_9.setObjectName("btn_9")
+        self.btn_okay = QtWidgets.QPushButton(LoginForm)
+        self.btn_okay.setGeometry(QtCore.QRect(50, 353, 161, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_okay.setFont(font)
+        self.btn_okay.setObjectName("btn_okay")
+        self.btn_erase_one = QtWidgets.QPushButton(LoginForm)
+        self.btn_erase_one.setGeometry(QtCore.QRect(465, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_one.setFont(font)
+        self.btn_erase_one.setObjectName("btn_erase_one")
+        self.btn_0 = QtWidgets.QPushButton(LoginForm)
+        self.btn_0.setGeometry(QtCore.QRect(567, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_0.setFont(font)
+        self.btn_0.setObjectName("btn_0")
+        self.btn_6 = QtWidgets.QPushButton(LoginForm)
+        self.btn_6.setGeometry(QtCore.QRect(669, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_6.setFont(font)
+        self.btn_6.setObjectName("btn_6")
+        self.lbl_login = QtWidgets.QLabel(LoginForm)
+        self.lbl_login.setGeometry(QtCore.QRect(50, 45, 371, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(25)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_login.setFont(font)
+        self.lbl_login.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_login.setObjectName("lbl_login")
+        self.btn_8 = QtWidgets.QPushButton(LoginForm)
+        self.btn_8.setGeometry(QtCore.QRect(567, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_8.setFont(font)
+        self.btn_8.setObjectName("btn_8")
+        self.lbl_password = QtWidgets.QLabel(LoginForm)
+        self.lbl_password.setGeometry(QtCore.QRect(47, 220, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_password.setFont(font)
+        self.lbl_password.setObjectName("lbl_password")
+        self.btn_5 = QtWidgets.QPushButton(LoginForm)
+        self.btn_5.setGeometry(QtCore.QRect(567, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_5.setFont(font)
+        self.btn_5.setObjectName("btn_5")
+        self.le_password = ClickableLineEdit.ClickableLineEdit(LoginForm)
+        self.le_password.setGeometry(QtCore.QRect(167, 220, 252, 40))
+        self.le_password.setEchoMode(QtWidgets.QLineEdit.Password)
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(19)
+        self.le_password.setFont(font)
+        self.le_password.setObjectName("le_password")
+        self.lbl_notifier = QtWidgets.QLabel(LoginForm)
+        self.lbl_notifier.setGeometry(QtCore.QRect(50, 280, 371, 50))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_notifier.setFont(font)
+        self.lbl_notifier.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_notifier.setObjectName("lbl_notifier")
+        self.le_user_id = ClickableLineEdit.ClickableLineEdit(LoginForm)
+        self.le_user_id.setGeometry(QtCore.QRect(167, 150, 252, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        self.le_user_id.setFont(font)
+        self.le_user_id.setObjectName("le_user_id")
+        self.btn_erase_all = QtWidgets.QPushButton(LoginForm)
+        self.btn_erase_all.setGeometry(QtCore.QRect(669, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_all.setFont(font)
+        self.btn_erase_all.setObjectName("btn_erase_all")
+        self.lbl_user_id = QtWidgets.QLabel(LoginForm)
+        self.lbl_user_id.setGeometry(QtCore.QRect(47, 150, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_user_id.setFont(font)
+        self.lbl_user_id.setObjectName("lbl_user_id")
+        self.btn_3 = QtWidgets.QPushButton(LoginForm)
+        self.btn_3.setGeometry(QtCore.QRect(669, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_3.setFont(font)
+        self.btn_3.setObjectName("btn_3")
+        self.btn_1 = QtWidgets.QPushButton(LoginForm)
+        self.btn_1.setEnabled(True)
+        self.btn_1.setGeometry(QtCore.QRect(465, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_1.setFont(font)
+        self.btn_1.setObjectName("btn_1")
+        self.btn_7 = QtWidgets.QPushButton(LoginForm)
+        self.btn_7.setGeometry(QtCore.QRect(465, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_7.setFont(font)
+        self.btn_7.setObjectName("btn_7")
+        self.btn_2 = QtWidgets.QPushButton(LoginForm)
+        self.btn_2.setGeometry(QtCore.QRect(567, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_2.setFont(font)
+        self.btn_2.setObjectName("btn_2")
+        self.btn_4 = QtWidgets.QPushButton(LoginForm)
+        self.btn_4.setGeometry(QtCore.QRect(465, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_4.setFont(font)
+        self.btn_4.setObjectName("btn_4")
+        self.set_write_id()
+        self.btn_method_setup()
+        self.retranslateUi(LoginForm)
+        QtCore.QMetaObject.connectSlotsByName(LoginForm)
+
+    def retranslateUi(self, LoginForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.btn_back.setText(_translate("LoginForm", "뒤로"))
+        self.btn_9.setText(_translate("LoginForm", "9"))
+        self.btn_okay.setText(_translate("LoginForm", "로그인"))
+        self.btn_erase_one.setText(_translate("LoginForm", "<-"))
+        self.btn_0.setText(_translate("LoginForm", "0"))
+        self.btn_6.setText(_translate("LoginForm", "6"))
+        self.lbl_login.setText(_translate("LoginForm", "사용자 로그인"))
+        self.btn_8.setText(_translate("LoginForm", "8"))
+        self.lbl_password.setText(_translate("LoginForm", "비밀번호"))
+        self.btn_5.setText(_translate("LoginForm", "5"))
+        self.lbl_notifier.setText(_translate("LoginForm", "ID와 비밀번호를 입력해주세요"))
+        self.btn_erase_all.setText(_translate("LoginForm", "C"))
+        self.lbl_user_id.setText(_translate("LoginForm", "사용자 ID"))
+        self.btn_3.setText(_translate("LoginForm", "3"))
+        self.btn_1.setText(_translate("LoginForm", "1"))
+        self.btn_7.setText(_translate("LoginForm", "7"))
+        self.btn_2.setText(_translate("LoginForm", "2"))
+        self.btn_4.setText(_translate("LoginForm", "4"))
+
+    def btn_method_setup(self):
+        self.btn_1.clicked.connect(self.btn_1_clicked)
+        self.btn_2.clicked.connect(self.btn_2_clicked)
+        self.btn_3.clicked.connect(self.btn_3_clicked)
+        self.btn_4.clicked.connect(self.btn_4_clicked)
+        self.btn_5.clicked.connect(self.btn_5_clicked)
+        self.btn_6.clicked.connect(self.btn_6_clicked)
+        self.btn_7.clicked.connect(self.btn_7_clicked)
+        self.btn_8.clicked.connect(self.btn_8_clicked)
+        self.btn_9.clicked.connect(self.btn_9_clicked)
+        self.btn_0.clicked.connect(self.btn_0_clicked)
+        self.btn_erase_one.clicked.connect(self.btn_erase_one_clicked)
+        self.btn_erase_all.clicked.connect(self.btn_erase_all_clicked)
+        self.btn_okay.clicked.connect(self.btn_okay_clicked)
+        self.btn_back.clicked.connect(self.btn_back_clicked)
+
+        self.le_user_id.clicked.connect(self.set_write_id)
+        self.le_password.clicked.connect(self.set_write_pass)
+
+    def set_write_id(self):
+        self.le2write = 1
+
+    def set_write_pass(self):
+        self.le2write = 2
+
+    def btn_1_clicked(self):
+        self.btn_process(1)
+
+    def btn_2_clicked(self):
+        self.btn_process(2)
+
+    def btn_3_clicked(self):
+        self.btn_process(3)
+
+    def btn_4_clicked(self):
+        self.btn_process(4)
+
+    def btn_5_clicked(self):
+        self.btn_process(5)
+
+    def btn_6_clicked(self):
+        self.btn_process(6)
+
+    def btn_7_clicked(self):
+        self.btn_process(7)
+
+    def btn_8_clicked(self):
+        self.btn_process(8)
+
+    def btn_9_clicked(self):
+        self.btn_process(9)
+
+    def btn_erase_one_clicked(self):
+        self.btn_process(-1)
+
+    def btn_0_clicked(self):
+        self.btn_process(0)
+
+    def btn_erase_all_clicked(self):
+        self.btn_process(-2)
+
+    def btn_okay_clicked(self):
+        self.btn_process(999)
+
+    def btn_back_clicked(self):
+        self.btn_process(-999)
+
+    def btn_process(self, num):
+        if(num == 999):
+            self.login()
+        elif (num == -999):
+            self.back()
+        elif (num == -1):
+            if (self.le2write == 1):
+                self.le_user_id.backspace()
+            else:
+                self.le_password.backspace()
+        elif (num == -2):
+            if (self.le2write == 1):
+                self.le_user_id.clear()
+            else:
+                self.le_password.clear()
+
+        else:
+            if (self.le2write == 1):
+                self.le_user_id.addText(num)
+                self.le_user_id.setFocus()
+            elif (self.le2write == 2):
+                self.le_password.addText(num)
+                self.le_password.setFocus()
+            else:
+                pass
+
+    def login(self):
+        if (self.le_user_id.text() == ""):
+            self.lbl_notifier.setText("ID를 입력해주세요.")
+        elif (self.le_password.text() == ""):
+            self.lbl_notifier.setText("비밀번호를 입력해주세요.")
+        else:
+            login_index = self.main_stacked_widget.user_finder(self.le_user_id.text())
+            if (login_index == -1):
+                self.lbl_notifier.setText("존재하지 않는 사용자입니다.")
+            else:
+                if (self.main_stacked_widget.get_password(login_index) == self.le_password.text()):
+                    self.open_menu(login_index)
+                else:
+                    self.lbl_notifier.setText("비밀번호를 확인해주세요.")
+
+    def back(self):
+        self.main_stacked_widget.logout()
+
+    def to_login(self):
+        self.set_write_id()
+        self.lbl_notifier.setText("ID와 비밀번호를 입력해주세요.")
+        self.le_user_id.clear()
+        self.le_password.clear()
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+
+    def open_menu(self, login_index):
+        self.main_stacked_widget.login_index = login_index
+        id = self.main_stacked_widget.get_user_id(self.main_stacked_widget.login_index)
+        if (id == "999"):
+            self.main_stacked_widget.AdminMenu_Ui.to_admin_menu()
+        else:
+            self.main_stacked_widget.UserMenu_Ui.to_user_menu()
+

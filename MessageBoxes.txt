@@ -1,0 +1,26 @@
+from PyQt5.QtWidgets import QMessageBox
+
+def warning_message_box(title, message):
+    msgbox = QMessageBox()
+    msgbox.setIcon(msgbox.Warning)
+    msgbox.setWindowTitle(title)
+    msgbox.setText(message)
+    msgbox.setStandardButtons(msgbox.Ok)
+    msgbox.exec_()
+
+def question_message_box(title, message):
+    msgbox = QMessageBox()
+    msgbox.setWindowTitle(title)
+    msgbox.setText(message)
+    msgbox.setIcon(msgbox.Question)
+    msgbox.setStandardButtons(msgbox.Yes)
+    msgbox.addButton(msgbox.No)
+    msgbox.setDefaultButton(msgbox.No)
+    return msgbox.exec()
+
+def message_box(title, message):
+    msgbox = QMessageBox()
+    msgbox.setWindowTitle(title)
+    msgbox.setText(message)
+    msgbox.setStandardButtons(msgbox.Ok)
+    msgbox.exec_()

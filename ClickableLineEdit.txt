@@ -1,0 +1,15 @@
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import pyqtSignal
+
+
+class ClickableLineEdit(QtWidgets.QLineEdit):
+    clicked = pyqtSignal()
+
+    def mousePressEvent(self, QMouseEvent):
+        self.clicked.emit()
+
+    def addText(self,text):
+        if(len(self.text()) < 15):
+            self.setText(self.text() + "{0}".format(text))
+        else:
+            pass

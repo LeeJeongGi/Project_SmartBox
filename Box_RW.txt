@@ -1,0 +1,10 @@
+import json
+
+def read_box():
+    with open("BoxData.json", 'r') as box:
+        box_data = json.load(box)
+    return box_data
+
+def write_box(box_data):
+    with open("BoxData.json", 'w') as box:
+        json.dump(box_data, box)

@@ -1,0 +1,85 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import MessageBoxes
+
+class Receive(object):
+    def setupUi(self, ReceiveForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        ReceiveForm.setObjectName("ReceiveForm")
+        ReceiveForm.resize(800, 480)
+        self.lbl_select_box = QtWidgets.QLabel(ReceiveForm)
+        self.lbl_select_box.setGeometry(QtCore.QRect(0, 0, 800, 131))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_select_box.setFont(font)
+        self.lbl_select_box.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_select_box.setObjectName("lbl_select_box")
+        self.btn_receive = QtWidgets.QPushButton(ReceiveForm)
+        self.btn_receive.setGeometry(QtCore.QRect(624, 140, 140, 140))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(15)
+        self.btn_receive.setFont(font)
+        self.btn_receive.setObjectName("btn_receive")
+        self.btn_back = QtWidgets.QPushButton(ReceiveForm)
+        self.btn_back.setGeometry(QtCore.QRect(624, 301, 140, 140))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(15)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.list_box = QtWidgets.QListWidget(ReceiveForm)
+        self.list_box.setGeometry(QtCore.QRect(40, 140, 551, 301))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.list_box.setFont(font)
+        self.list_box.setObjectName("list_box")
+        self.btn_method_setup()
+        self.retranslateUi(ReceiveForm)
+        QtCore.QMetaObject.connectSlotsByName(ReceiveForm)
+
+    def retranslateUi(self, ReceiveForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_select_box.setText(_translate("ReceiveForm", "수령할 보관함을 선택해주세요"))
+        self.btn_receive.setText(_translate("ReceiveForm", "수령하기"))
+        self.btn_back.setText(_translate("ReceiveForm", "뒤로"))
+
+    def btn_method_setup(self):
+        self.btn_receive.clicked.connect(self.okay)
+        self.btn_back.clicked.connect(self.back)
+
+    def okay(self):
+        sel_box_row = self.list_box.currentRow()
+        if (sel_box_row >= 0):
+            sel_box = self.list_box.currentItem().text()
+            self.main_stacked_widget.OpenMessage_Ui.to_open_box(sel_box, "")
+                
+        else:
+            MessageBoxes.warning_message_box("보관함 선택", "찾을 보관함을 선택해주세요.")
+
+    def back(self):
+        self.main_stacked_widget.logout()
+
+    def list_boxes(self):
+        if (self.main_stacked_widget.login_driver == ""):
+            for i in range(len(self.main_stacked_widget.box_list)):
+                if (self.main_stacked_widget.get_owner(i), self.main_stacked_widget.get_user_id(self.main_stacked_widget.login_index)):
+                    self.list_box.addItem(self.main_stacked_widget.get_box_num(i))
+                else:
+                    pass
+        else:
+            for i in range(len(self.main_stacked_widget.box_list)):
+                owner = self.main_stacked_widget.get_owner(i)
+                if (owner == self.main_stacked_widget.login_driver):
+                    self.list_box.addItem(self.main_stacked_widget.get_box_num(i))
+                
+                else:
+                    pass
+
+    def to_receive(self):
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+        self.list_box.clear()
+        self.list_boxes()
+        

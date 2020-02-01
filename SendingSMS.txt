@@ -1,0 +1,67 @@
+import sys
+from sdk.api.message import Message
+from sdk.exceptions import CoolsmsException
+import codecs
+
+## @brief This sample code demonstrate how to send sms through CoolSMS Rest API PHP
+
+def sendVerifySMS(driver_num, admin_num, verify_num):
+
+    # set api key, api secret
+    api_key = "NCSAC8PJX5JGCM9F"
+    api_secret = "EF3NVCQ7FHPXRBI8JMMR49KZNXRW9LJC"
+
+    fp = codecs.open('VerifySMSText.txt', 'r', 'utf-8')
+    SMSText = fp.read().format(verify_num)
+
+## 4 params(to, from, type, text) are mandatory. must be filled
+    params = dict()
+    params['type'] = 'sms' # Message type ( sms, lms, mms, ata )
+    params['to'] = driver_num # Recipients Number '01000000000,01000000001'
+    params['from'] = admin_num # Sender number
+    params['text'] = SMSText # Message
+    cool = Message(api_key, api_secret)
+
+    try:
+        response = cool.send(params)
+        print("Success Count : %s" % response['success_count'])
+        print("Error Count : %s" % response['error_count'])
+        print("Group ID : %s" % response['group_id'])
+
+        if "error_list" in response:
+            print("Error List : %s" % response['error_list'])
+    except CoolsmsException as e:
+        print("Error Code : %s" % e.code)
+        print("Error Message : %s" % e.msg)
+
+def sendAlarmSMS(guest_num, admin_num, guest_id, box_num):
+# set api key, api secret
+    api_key = "NCSAC8PJX5JGCM9F"
+    api_secret = "EF3NVCQ7FHPXRBI8JMMR49KZNXRW9LJC"
+
+    fp = codecs.open('AlarmSMSText.txt', 'r', 'utf-8')
+    SMSText = fp.read().format(box_num)
+
+## 4 params(to, from, type, text) are mandatory. must be filled
+    params = dict()
+    params['type'] = 'sms' # Message type ( sms, lms, mms, ata )
+    params['to'] = guest_num # Recipients Number '01000000000,01000000001'
+    params['from'] = admin_num # Sender number
+    params['text'] = SMSText # Message
+
+    cool = Message(api_key, api_secret)
+
+    try:
+        response = cool.send(params)
+        print("Success Count : %s" % response['success_count'])
+        print("Error Count : %s" % response['error_count'])
+        print("Group ID : %s" % response['group_id'])
+
+        if "error_list" in response:
+            print("Error List : %s" % response['error_list'])
+
+    except CoolsmsException as e:
+        print("Error Code : %s" % e.code)
+        print("Error Message : %s" % e.msg)
+
+    sys.exit()

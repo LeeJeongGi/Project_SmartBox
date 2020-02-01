@@ -1,0 +1,352 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import MessageBoxes
+#import SendingSMS
+import random
+import ClickableLineEdit
+
+class DriverVerify(object):
+    def setupUi(self, DriverVerifyForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        self.init_timer()
+        DriverVerifyForm.setObjectName("DriverVerifyForm")
+        DriverVerifyForm.resize(800, 480)
+        self.btn_0 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_0.setGeometry(QtCore.QRect(567, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_0.setFont(font)
+        self.btn_0.setObjectName("btn_0")
+        self.btn_1 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_1.setGeometry(QtCore.QRect(465, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_1.setFont(font)
+        self.btn_1.setObjectName("btn_1")
+        self.btn_2 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_2.setGeometry(QtCore.QRect(567, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_2.setFont(font)
+        self.btn_2.setObjectName("btn_2")
+        self.btn_3 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_3.setGeometry(QtCore.QRect(669, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_3.setFont(font)
+        self.btn_3.setObjectName("btn_3")
+        self.btn_4 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_4.setGeometry(QtCore.QRect(465, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_4.setFont(font)
+        self.btn_4.setObjectName("btn_4")
+        self.btn_5 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_5.setGeometry(QtCore.QRect(567, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_5.setFont(font)
+        self.btn_5.setObjectName("btn_5")
+        self.btn_6 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_6.setGeometry(QtCore.QRect(669, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_6.setFont(font)
+        self.btn_6.setObjectName("btn_6")
+        self.btn_7 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_7.setGeometry(QtCore.QRect(465, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_7.setFont(font)
+        self.btn_7.setObjectName("btn_7")
+        self.btn_8 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_8.setGeometry(QtCore.QRect(567, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_8.setFont(font)
+        self.btn_8.setObjectName("btn_8")
+        self.btn_9 = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_9.setGeometry(QtCore.QRect(669, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_9.setFont(font)
+        self.btn_9.setObjectName("btn_9")
+        self.btn_erase_one = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_erase_one.setGeometry(QtCore.QRect(465, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_one.setFont(font)
+        self.btn_erase_one.setObjectName("btn_erase_one")
+        self.btn_erase_all = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_erase_all.setGeometry(QtCore.QRect(669, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_all.setFont(font)
+        self.btn_erase_all.setObjectName("btn_erase_all")
+        self.lbl_title = QtWidgets.QLabel(DriverVerifyForm)
+        self.lbl_title.setGeometry(QtCore.QRect(50, 42, 371, 81))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_title.setFont(font)
+        self.lbl_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_title.setObjectName("lbl_title")
+        self.lbl_driver_num = QtWidgets.QLabel(DriverVerifyForm)
+        self.lbl_driver_num.setGeometry(QtCore.QRect(50, 145, 108, 40))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_driver_num.setFont(font)
+        self.lbl_driver_num.setObjectName("lbl_driver_num")
+        self.le_driver_num = ClickableLineEdit.ClickableLineEdit(DriverVerifyForm)
+        self.le_driver_num.setGeometry(QtCore.QRect(50, 195, 375, 38))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        self.le_driver_num.setFont(font)
+        self.le_driver_num.setText("")
+        self.le_driver_num.setAlignment(QtCore.Qt.AlignCenter)
+        self.le_driver_num.setObjectName("le_driver_num")
+        self.btn_okay = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_okay.setGeometry(QtCore.QRect(50, 353, 161, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_okay.setFont(font)
+        self.btn_okay.setObjectName("btn_okay")
+        self.btn_back = QtWidgets.QPushButton(DriverVerifyForm)
+        self.btn_back.setGeometry(QtCore.QRect(259, 353, 161, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.le_verify_num = ClickableLineEdit.ClickableLineEdit(DriverVerifyForm)
+        self.le_verify_num.setGeometry(QtCore.QRect(50, 292, 258, 38))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        self.le_verify_num.setFont(font)
+        self.le_verify_num.setText("")
+        self.le_verify_num.setObjectName("le_verify_num")
+        self.lbl_verify_num = QtWidgets.QLabel(DriverVerifyForm)
+        self.lbl_verify_num.setGeometry(QtCore.QRect(50, 242, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_verify_num.setFont(font)
+        self.lbl_verify_num.setObjectName("lbl_verify_num")
+        self.lbl_timer = QtWidgets.QLabel(DriverVerifyForm)
+        self.lbl_timer.setGeometry(QtCore.QRect(320, 292, 100, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_timer.setFont(font)
+        self.lbl_timer.setObjectName("lbl_timer")
+        self.btn_method_setup()
+        self.retranslateUi(DriverVerifyForm)
+        QtCore.QMetaObject.connectSlotsByName(DriverVerifyForm)
+
+    def retranslateUi(self, DriverVerifyForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.btn_0.setText(_translate("DriverVerifyForm", "0"))
+        self.btn_3.setText(_translate("DriverVerifyForm", "3"))
+        self.btn_4.setText(_translate("DriverVerifyForm", "4"))
+        self.btn_1.setText(_translate("DriverVerifyForm", "1"))
+        self.btn_2.setText(_translate("DriverVerifyForm", "2"))
+        self.btn_7.setText(_translate("DriverVerifyForm", "7"))
+        self.btn_6.setText(_translate("DriverVerifyForm", "6"))
+        self.btn_erase_one.setText(_translate("DriverVerifyForm", "<-"))
+        self.btn_erase_all.setText(_translate("DriverVerifyForm", "C"))
+        self.btn_8.setText(_translate("DriverVerifyForm", "8"))
+        self.btn_9.setText(_translate("DriverVerifyForm", "9"))
+        self.btn_5.setText(_translate("DriverVerifyForm", "5"))
+        self.lbl_title.setText(_translate("DriverVerifyForm", "배송기사님의 \n휴대폰 번호를 입력해주세요."))
+        self.lbl_driver_num.setText(_translate("DriverVerifyForm", "전화번호"))
+        self.btn_okay.setText(_translate("DriverVerifyForm", "다음"))
+        self.btn_back.setText(_translate("DriverVerifyForm", "뒤로"))
+        self.lbl_verify_num.setText(_translate("DriverVerifyForm", "인증번호"))
+        self.lbl_timer.setText(_translate("DriverVerifyForm", "Time"))
+
+    def btn_method_setup(self):
+        self.btn_1.clicked.connect(self.btn_1_clicked)
+        self.btn_2.clicked.connect(self.btn_2_clicked)
+        self.btn_3.clicked.connect(self.btn_3_clicked)
+        self.btn_4.clicked.connect(self.btn_4_clicked)
+        self.btn_5.clicked.connect(self.btn_5_clicked)
+        self.btn_6.clicked.connect(self.btn_6_clicked)
+        self.btn_7.clicked.connect(self.btn_7_clicked)
+        self.btn_8.clicked.connect(self.btn_8_clicked)
+        self.btn_9.clicked.connect(self.btn_9_clicked)
+        self.btn_0.clicked.connect(self.btn_0_clicked)
+        self.btn_erase_one.clicked.connect(self.btn_erase_one_clicked)
+        self.btn_erase_all.clicked.connect(self.btn_erase_all_clicked)
+        self.btn_okay.clicked.connect(self.btn_okay_clicked)
+        self.btn_back.clicked.connect(self.btn_back_clicked)
+
+    def set_write_num(self):
+        self.le2write = 1
+
+    def set_write_verify(self):
+        self.le2write = 2
+
+    def btn_1_clicked(self):
+        self.btn_process(1)
+
+    def btn_2_clicked(self):
+        self.btn_process(2)
+
+    def btn_3_clicked(self):
+        self.btn_process(3)
+
+    def btn_4_clicked(self):
+        self.btn_process(4)
+
+    def btn_5_clicked(self):
+        self.btn_process(5)
+
+    def btn_6_clicked(self):
+        self.btn_process(6)
+
+    def btn_7_clicked(self):
+        self.btn_process(7)
+
+    def btn_8_clicked(self):
+        self.btn_process(8)
+
+    def btn_9_clicked(self):
+        self.btn_process(9)
+
+    def btn_erase_one_clicked(self):
+        self.btn_process(-1)
+
+    def btn_0_clicked(self):
+        self.btn_process(0)
+
+    def btn_erase_all_clicked(self):
+        self.btn_process(-2)
+
+    def btn_okay_clicked(self):
+        self.btn_process(999)
+
+    def btn_back_clicked(self):
+        self.btn_process(-999)
+
+    def btn_process(self, num):
+        if (num == 999):
+            self.okay()
+
+        elif (num == -999):
+            self.back()
+
+        elif (num == -1):
+            if (self.le2write == 1):
+                self.le_driver_num.backspace()
+            else:
+                self.le_verify_num.backspace()
+        elif (num == -2):
+            if (self.le2write == 1):
+                self.le_driver_num.clear()
+            else:
+                self.le_verify_num.clear()
+        else:
+            if (self.le2write == 1):
+                self.le_driver_num.addText(num)
+            else:
+                self.le_verify_num.addText(num)
+
+    def okay(self):
+        if (self.le2write == 1):
+            num_in = self.le_driver_num.text()
+            if (num_in[:3] != "010" or len(num_in) != 11):
+                MessageBoxes.warning_message_box("오류", "올바른 전화번호를 입력해주세요.")
+            else:
+                self.le2write = 2
+                self.start_timer()
+                self.le_verify_num.show()
+                self.lbl_verify_num.show()
+                self.lbl_timer.show()
+                self.le_driver_num.setDisabled(True)
+                self.verify_num = random.randint(100000, 999999)
+              #  SendingSMS.sendVerifySMS(self.le_driver_num.text(), self.main_stacked_widget.admin_num, self.verify_num)
+             # 이부분  sendVerifySMS 잘못됨
+                print(self.verify_num)
+        elif (self.le2write == 2):
+            if (self.le_verify_num.text() != str(self.verify_num)):
+                MessageBoxes.warning_message_box("인증번호 오류", "인증번호를 확인해주세요.")
+            else:
+                self.main_stacked_widget.login_driver = self.le_driver_num.text()
+                self.timer.stop()
+                self.main_stacked_widget.DriverMenu_Ui.to_driver_menu()
+        else:
+            pass
+
+    def back(self):
+        self.timer.stop()
+        self.main_stacked_widget.logout()
+
+    def timeout(self):
+        self.sec -= 1
+        if (self.sec > 0):
+            self.set_timer()
+        elif (self.sec == 0):
+            self.timer.stop()
+            self.reset_form()
+            self.main_stacked_widget.logout()
+        else:
+            pass
+    def init_timer(self):
+        self.sec = 0
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.timeout)
+
+    def set_timer(self):
+        self.lbl_timer.setText("%01d:%02d" % (self.sec // 60, self.sec % 60))
+
+    def start_timer(self):
+        self.sec = 180
+        self.set_timer()
+        self.timer.start(1000)
+
+    def reset_form(self):
+        self.le2write = 1
+        self.verify_num = 0
+        self.timer.stop()
+        self.le_driver_num.setEnabled(True)
+        self.le_driver_num.clear()
+        self.le_verify_num.clear()
+        self.le_verify_num.hide()
+        self.lbl_verify_num.hide()
+        self.lbl_timer.hide()
+
+    def to_driver_verify(self):
+        self.reset_form()
+        self.le_driver_num.clear()
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+
+
+
+
+

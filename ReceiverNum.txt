@@ -1,0 +1,291 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import MessageBoxes
+import ClickableLineEdit
+
+
+class ReceiverNum(object):
+    def setupUi(self, ReceiverNumForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        ReceiverNumForm.setObjectName("ReceiverNumForm")
+        ReceiverNumForm.resize(800, 480)
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        ReceiverNumForm.setFont(font)
+        self.btn_0 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_0.setGeometry(QtCore.QRect(567, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_0.setFont(font)
+        self.btn_0.setObjectName("btn_0")
+        self.btn_1 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_1.setGeometry(QtCore.QRect(465, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_1.setFont(font)
+        self.btn_1.setObjectName("btn_1")
+        self.btn_2 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_2.setGeometry(QtCore.QRect(567, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_2.setFont(font)
+        self.btn_2.setObjectName("btn_2")
+        self.btn_3 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_3.setGeometry(QtCore.QRect(669, 42, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_3.setFont(font)
+        self.btn_3.setObjectName("btn_3")
+        self.btn_4 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_4.setGeometry(QtCore.QRect(465, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_4.setFont(font)
+        self.btn_4.setObjectName("btn_4")
+        self.btn_5 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_5.setGeometry(QtCore.QRect(567, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_5.setFont(font)
+        self.btn_5.setObjectName("btn_5")
+        self.btn_6 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_6.setGeometry(QtCore.QRect(669, 144, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_6.setFont(font)
+        self.btn_6.setObjectName("btn_6")
+        self.btn_7 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_7.setGeometry(QtCore.QRect(465, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_7.setFont(font)
+        self.btn_7.setObjectName("btn_7")
+        self.btn_8 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_8.setGeometry(QtCore.QRect(567, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_8.setFont(font)
+        self.btn_8.setObjectName("btn_8")
+        self.btn_9 = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_9.setGeometry(QtCore.QRect(669, 244, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_9.setFont(font)
+        self.btn_9.setObjectName("btn_9")
+        self.btn_erase_one = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_erase_one.setGeometry(QtCore.QRect(465, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_one.setFont(font)
+        self.btn_erase_one.setObjectName("btn_erase_one")
+        self.btn_erase_all = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_erase_all.setGeometry(QtCore.QRect(669, 344, 90, 90))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        self.btn_erase_all.setFont(font)
+        self.btn_erase_all.setObjectName("btn_erase_all")
+        self.lbl_title = QtWidgets.QLabel(ReceiverNumForm)
+        self.lbl_title.setGeometry(QtCore.QRect(50, 42, 371, 81))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_title.setFont(font)
+        self.lbl_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_title.setObjectName("lbl_title")
+        self.lbl_receiver = QtWidgets.QLabel(ReceiverNumForm)
+        self.lbl_receiver.setGeometry(QtCore.QRect(50, 145, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_receiver.setFont(font)
+        self.lbl_receiver.setObjectName("lbl_receiver")
+        self.le_driver_num = ClickableLineEdit.ClickableLineEdit(ReceiverNumForm)
+        self.le_driver_num.setGeometry(QtCore.QRect(50, 195, 375, 38))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        font.setWeight(75)
+        self.le_driver_num.setFont(font)
+        self.le_driver_num.setAlignment(QtCore.Qt.AlignCenter)
+        self.le_driver_num.setObjectName("le_driver_num")
+        self.lbl_selected_box = QtWidgets.QLabel(ReceiverNumForm)
+        self.lbl_selected_box.setGeometry(QtCore.QRect(50, 260, 108, 40))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_selected_box.setFont(font)
+        self.lbl_selected_box.setObjectName("lbl_selected_box")
+        self.btn_okay = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_okay.setGeometry(QtCore.QRect(50, 353, 161, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        font.setWeight(50)
+        self.btn_okay.setFont(font)
+        self.btn_okay.setObjectName("btn_okay")
+        self.btn_back = QtWidgets.QPushButton(ReceiverNumForm)
+        self.btn_back.setGeometry(QtCore.QRect(259, 353, 161, 81))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(20)
+        font.setWeight(50)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.lbl_selected_num = QtWidgets.QLabel(ReceiverNumForm)
+        self.lbl_selected_num.setGeometry(QtCore.QRect(230, 260, 191, 41))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(23)
+        font.setWeight(75)
+        self.lbl_selected_num.setFont(font)
+        self.lbl_selected_num.setObjectName("lbl_selected_num")
+        self.btn_method_setup()
+        self.retranslateUi(ReceiverNumForm)
+        QtCore.QMetaObject.connectSlotsByName(ReceiverNumForm)
+
+    def retranslateUi(self, ReceiverNumForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.btn_0.setText(_translate("ReceiverNumForm", "0"))
+        self.btn_3.setText(_translate("ReceiverNumForm", "3"))
+        self.btn_4.setText(_translate("ReceiverNumForm", "4"))
+        self.btn_1.setText(_translate("ReceiverNumForm", "1"))
+        self.btn_2.setText(_translate("ReceiverNumForm", "2"))
+        self.btn_7.setText(_translate("ReceiverNumForm", "7"))
+        self.btn_6.setText(_translate("ReceiverNumForm", "6"))
+        self.btn_erase_one.setText(_translate("ReceiverNumForm", "<-"))
+        self.btn_erase_all.setText(_translate("ReceiverNumForm", "C"))
+        self.btn_8.setText(_translate("ReceiverNumForm", "8"))
+        self.btn_9.setText(_translate("ReceiverNumForm", "9"))
+        self.btn_5.setText(_translate("ReceiverNumForm", "5"))
+        self.lbl_title.setText(_translate("ReceiverNumForm", "배송기사님의 \n휴대폰 번호를 입력해주세요."))
+        self.lbl_receiver.setText(_translate("ReceiverNumForm", "전화번호"))
+        self.lbl_selected_box.setText(_translate("ReceiverNumForm", "보관함"))
+        self.btn_okay.setText(_translate("ReceiverNumForm", "다음"))
+        self.btn_back.setText(_translate("ReceiverNumForm", "뒤로"))
+        self.lbl_selected_num.setText(_translate("ReceiverNumForm", "default"))
+
+    def btn_method_setup(self):
+        self.btn_1.clicked.connect(self.btn_1_clicked)
+        self.btn_2.clicked.connect(self.btn_2_clicked)
+        self.btn_3.clicked.connect(self.btn_3_clicked)
+        self.btn_4.clicked.connect(self.btn_4_clicked)
+        self.btn_5.clicked.connect(self.btn_5_clicked)
+        self.btn_6.clicked.connect(self.btn_6_clicked)
+        self.btn_7.clicked.connect(self.btn_7_clicked)
+        self.btn_8.clicked.connect(self.btn_8_clicked)
+        self.btn_9.clicked.connect(self.btn_9_clicked)
+        self.btn_0.clicked.connect(self.btn_0_clicked)
+        self.btn_erase_one.clicked.connect(self.btn_erase_one_clicked)
+        self.btn_erase_all.clicked.connect(self.btn_erase_all_clicked)
+        self.btn_okay.clicked.connect(self.btn_okay_clicked)
+        self.btn_back.clicked.connect(self.btn_back_clicked)
+
+    def set_write_id(self):
+        self.le2write = 1
+
+    def set_write_pass(self):
+        self.le2write = 2
+
+    def btn_1_clicked(self):
+        self.btn_process(1)
+
+    def btn_2_clicked(self):
+        self.btn_process(2)
+
+    def btn_3_clicked(self):
+        self.btn_process(3)
+
+    def btn_4_clicked(self):
+        self.btn_process(4)
+
+    def btn_5_clicked(self):
+        self.btn_process(5)
+
+    def btn_6_clicked(self):
+        self.btn_process(6)
+
+    def btn_7_clicked(self):
+        self.btn_process(7)
+
+    def btn_8_clicked(self):
+        self.btn_process(8)
+
+    def btn_9_clicked(self):
+        self.btn_process(9)
+
+    def btn_erase_one_clicked(self):
+        self.btn_process(-1)
+
+    def btn_0_clicked(self):
+        self.btn_process(0)
+
+    def btn_erase_all_clicked(self):
+        self.btn_process(-2)
+
+    def btn_okay_clicked(self):
+        self.btn_process(999)
+
+    def btn_back_clicked(self):
+        self.btn_process(-999)
+
+    def btn_process(self, num):
+        if (num == 999):
+            self.open_box()
+        elif (num == -999):
+            self.back()
+        elif (num == -1):
+            self.le_driver_num.backspace()
+        elif (num == -2):
+            self.le_driver_num.clear()
+        else:
+            self.le_driver_num.addText(num)
+
+    def open_box(self):
+        num_in = self.le_driver_num.text()
+        if (self.current_mode == 2):
+            if (num_in[:3] != "010" or len(num_in) != 11):
+                MessageBoxes.warning_message_box("오류", "올바른 전화번호를 입력해주세요.")
+            else:
+                self.main_stacked_widget.OpenMessage_Ui.to_open_box(self.box2open, num_in)
+        else:
+            if (num_in != "999"):
+                if (self.main_stacked_widget.user_finder(num_in) != -1):
+                    self.main_stacked_widget.OpenMessage_Ui.to_open_box(self.box2open, num_in)
+                else:
+                    MessageBoxes.warning_message_box("오류", "존재하지 않는 사용자입니다.")
+            else:
+                MessageBoxes.warning_message_box("오류", "배송받을 수 없는 사용자입니다.")
+
+    def back(self):
+        self.main_stacked_widget.SelectBox_Ui.to_select_box()
+
+    def to_receiver_num(self, box2open, mode):
+        self.current_mode = mode
+        self.le_driver_num.clear()
+        self.box2open = box2open
+        if (self.current_mode == 1):
+            self.lbl_title.setText("수령자의 ID를 입력해주세요.\n(ex.학번 혹은 호수)")
+            self.lbl_receiver.setText("수령자 ID")
+        elif (self.current_mode == 2):
+            self.lbl_title.setText("배송기사님의 \n휴대폰 번호를 입력해주세요.")
+            self.lbl_receiver.setText("전화번호")
+        self.lbl_selected_num.setText(str(self.box2open))
+        self.main_stacked_widget.setCurrentIndex(self.page_index)

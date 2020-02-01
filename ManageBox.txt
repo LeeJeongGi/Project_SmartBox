@@ -1,0 +1,151 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import SendingSMS
+
+class ManageBox(object):
+    def setupUi(self, ManageBoxForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        ManageBoxForm.setObjectName("BoxManageUi")
+        ManageBoxForm.resize(800, 480)
+        self.lbl_box = QtWidgets.QLabel(ManageBoxForm)
+        self.lbl_box.setGeometry(QtCore.QRect(0, 0, 800, 131))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_box.setFont(font)
+        self.lbl_box.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_box.setObjectName("lbl_box")
+        self.tbl_box = QtWidgets.QTableWidget(ManageBoxForm)
+        self.tbl_box.setGeometry(QtCore.QRect(40, 140, 551, 300))
+        self.tbl_box.setColumnCount(5)
+        self.tbl_box.setObjectName("tbl_box")
+        item = QtWidgets.QTableWidgetItem()
+        self.tbl_box.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tbl_box.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tbl_box.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tbl_box.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tbl_box.setHorizontalHeaderItem(4, item)
+        self.btn_back = QtWidgets.QPushButton(ManageBoxForm)
+        self.btn_back.setGeometry(QtCore.QRect(624, 301, 140, 140))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.btn_resend = QtWidgets.QPushButton(ManageBoxForm)
+        self.btn_resend.setGeometry(QtCore.QRect(624, 140, 140, 140))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.btn_resend.setFont(font)
+        self.btn_resend.setObjectName("btn_resend")
+        self.btn_method_setup()
+        self.retranslateUi(ManageBoxForm)
+        QtCore.QMetaObject.connectSlotsByName(ManageBoxForm)
+
+    def retranslateUi(self, ManageBoxForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_box.setText(_translate("ManageBoxForm", "보관함 관리"))
+        self.btn_resend.setText(_translate("ManageBoxForm", "문자 보내기"))
+        self.tbl_box.setSortingEnabled(False)
+        item = self.tbl_box.horizontalHeaderItem(0)
+        item.setText(_translate("ManageBoxForm", "번호"))
+        self.tbl_box.setColumnWidth(0, 50)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        item.setFont(font)
+        item = self.tbl_box.horizontalHeaderItem(1)
+        item.setText(_translate("ManageBoxForm", "상태"))
+        self.tbl_box.setColumnWidth(1, 80)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        item.setFont(font)
+        item = self.tbl_box.horizontalHeaderItem(2)
+        item.setText(_translate("ManageBoxForm", "수신자"))
+        self.tbl_box.setColumnWidth(2, 100)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        item.setFont(font)
+        item = self.tbl_box.horizontalHeaderItem(3)
+        item.setText(_translate("ManageBoxForm", "배송자"))
+        self.tbl_box.setColumnWidth(3, 100)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        item.setFont(font)
+        item = self.tbl_box.horizontalHeaderItem(4)
+        item.setText(_translate("ManageBoxForm", "배송일"))
+        self.tbl_box.setColumnWidth(4, 150)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        item.setFont(font)
+        self.btn_back.setText(_translate("ManageBoxForm", "뒤로"))
+
+    def btn_method_setup(self):
+        self.btn_back.clicked.connect(self.back)
+        self.btn_resend.clicked.connect(self.resendemail)
+
+    def load_tbl_box(self):
+        self.tbl_box.clearContents()
+        self.tbl_box.setRowCount(0)
+        for i in range(len(self.main_stacked_widget.box_list)):
+            row_count = self.tbl_box.rowCount() + 1
+            self.tbl_box.setRowCount(row_count)
+            self.load_number(i)
+            self.load_owner(i)
+            self.load_driver_num(i)
+            self.load_arrival_time(i)
+        self.tbl_box.resizeRowToContents(30)
+
+    def load_number(self, i):
+        item = QtWidgets.QTableWidgetItem()
+        item.setText(self.main_stacked_widget.get_box_num(i))
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        item.setFont(font)
+        self.tbl_box.setItem(i, 0, item)
+
+    def load_owner(self, i):
+        item = QtWidgets.QTableWidgetItem()
+        item.setText(self.main_stacked_widget.get_owner(i))
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        item.setFont(font)
+        self.tbl_box.setItem(i, 2, item)
+
+    def load_driver_num(self, i):
+        item = QtWidgets.QTableWidgetItem()
+        item.setText(self.main_stacked_widget.get_driver_num(i))
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        item.setFont(font)
+        self.tbl_box.setItem(i, 3, item)
+
+    def load_arrival_time(self, i):
+        item = QtWidgets.QTableWidgetItem()
+        item.setText(self.main_stacked_widget.get_arrival_time(i)[:10])
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        item.setFont(font)
+        self.tbl_box.setItem(i, 4, item)
+
+    def back(self):
+        self.main_stacked_widget.AdminMenu_Ui.to_admin_menu()
+
+    def to_manage_box(self):
+        self.load_tbl_box()
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+
+    def resendemail(self):
+        SendingSMS.sendAlarmSMS(self.main_stacked_widget.get_num(self.owner), self.main_stacked_widget.admin_num)

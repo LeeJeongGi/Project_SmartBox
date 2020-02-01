@@ -1,0 +1,39 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import StackedWidget
+import sys
+
+class Ui_PackageMainWindow(object):
+    def setupUi(self, PackageMainWindow):
+        PackageMainWindow.setObjectName("무인택배함")
+        PackageMainWindow.resize(800, 480)
+        #PackageMainWindow.setCursor(QtGui.QCursor(QtCore.Qt.BlankCursor))
+        self.centralwidget = QtWidgets.QWidget(PackageMainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.stackedWidget = StackedWidget.StackedWidget(self.centralwidget)
+        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 800, 480))
+        self.stackedWidget.show()
+        self.stackedWidget.setObjectName("stackedWidget")
+        PackageMainWindow.setCentralWidget(self.centralwidget)
+        self.retranslateUi(PackageMainWindow)
+        self.stackedWidget.setCurrentIndex(0)
+        #QtCore.QMetaObject.connectSlotsByName(PackageMainWindow)
+
+    def retranslateUi(self, PackageMainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        PackageMainWindow.setWindowTitle(_translate("PackageMainWindow", "PackageMainWindow"))
+
+
+if __name__ == "__main__":
+    
+    app = QtWidgets.QApplication(sys.argv)
+    PackageMainWindow = QtWidgets.QMainWindow()
+    ui =Ui_PackageMainWindow()
+    ui.setupUi(PackageMainWindow)
+    PackageMainWindow.show()
+    sys.exit(app.exec_())
+   
+
+
+
+
+

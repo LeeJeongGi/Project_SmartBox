@@ -1,0 +1,65 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Adminmenu(object):
+    def setupUi(self, AdminMenuForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        AdminMenuForm.setObjectName("AdminMenuForm")
+        AdminMenuForm.resize(800, 480)
+        self.lbl_title = QtWidgets.QLabel(AdminMenuForm)
+        self.lbl_title.setGeometry(QtCore.QRect(0, 0, 800, 131))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_title.setFont(font)
+        self.lbl_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_title.setObjectName("lbl_title")
+        self.btn_manage_user = QtWidgets.QPushButton(AdminMenuForm)
+        self.btn_manage_user.setGeometry(QtCore.QRect(40, 140, 216, 301))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_manage_user.setFont(font)
+        self.btn_manage_user.setObjectName("btn_manage_user")
+        self.btn_back = QtWidgets.QPushButton(AdminMenuForm)
+        self.btn_back.setGeometry(QtCore.QRect(540, 140, 216, 301))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_back.setFont(font)
+        self.btn_back.setObjectName("btn_back")
+        self.btn_manage_box = QtWidgets.QPushButton(AdminMenuForm)
+        self.btn_manage_box.setGeometry(QtCore.QRect(290, 140, 216, 301))
+        font = QtGui.QFont()
+        font.setFamily("Agency FB")
+        font.setPointSize(18)
+        self.btn_manage_box.setFont(font)
+        self.btn_manage_box.setObjectName("btn_manage_box")
+        self.btn_method_setup()
+        self.retranslateUi(AdminMenuForm)
+        QtCore.QMetaObject.connectSlotsByName(AdminMenuForm)
+
+    def retranslateUi(self, AdminMenuForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_title.setText(_translate("AdminMenuForm", "안녕하세요, 관리자님."))
+        self.btn_manage_user.setText(_translate("AdminMenuForm", "사용자 관리"))
+        self.btn_back.setText(_translate("AdminMenuForm", "뒤로"))
+        self.btn_manage_box.setText(_translate("AdminMenuForm", "보관함 관리"))
+
+    def btn_method_setup(self):
+        self.btn_back.clicked.connect(self.logout)
+        self.btn_manage_user.clicked.connect(self.manage_user)
+        self.btn_manage_box.clicked.connect(self.manage_box)
+
+    def logout(self):
+        self.main_stacked_widget.logout()
+
+    def manage_user(self):
+        self.main_stacked_widget.ManageUser_Ui.to_manage_user()
+
+    def manage_box(self):
+        self.main_stacked_widget.ManageBox_Ui.to_manage_box()
+
+    def to_admin_menu(self):
+        self.main_stacked_widget.setCurrentIndex(self.page_index)

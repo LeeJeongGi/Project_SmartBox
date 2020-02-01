@@ -1,0 +1,45 @@
+import Box_RW
+
+class Box:
+
+    def __init__(self):
+        self.box_list = Box_RW.read_box()
+
+    def get_box_num(self, index):
+        return self.box_list[index]["box_num"]
+
+    def get_owner(self, index):
+        return self.box_list[index]["owner"]
+
+    def get_driver_num(self, index):
+        return self.box_list[index]["driver_num"]
+
+    def get_arrival_time(self, index):
+        return self.box_list[index]["arrival_time"]
+
+    def set_box_num(self, index, box_num):
+        self.box_list[index]["box_num"] = box_num
+
+    def set_owner(self, index, owner):
+        self.box_list[index]["owner"] = owner
+
+    def set_driver_num(self, index, driver_num):
+        self.box_list[index]["driver_num"] = driver_num
+
+    def set_arrival_time(self, index, arrival_time):
+        self.box_list[index]["arrival_time"] = arrival_time
+
+    def find_box_by_owner(self, owner):
+        for i in range(len(self.box_list)):
+            if (self.box_list[i]["owner"] == owner):
+                return i
+        return -1
+
+    def find_box_by_number(self, box_num):
+        for i in range(len(self.box_list)):
+            if (self.box_list[i]["box_num"] == box_num):
+                return i
+        return -1
+
+    def update_box(self):
+        Box_RW.write_box(self.box_list)

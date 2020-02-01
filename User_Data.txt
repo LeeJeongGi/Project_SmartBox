@@ -1,0 +1,40 @@
+import User_RW
+
+class User:
+    def __init__(self):
+        self.load_user()
+
+    def load_user(self):
+        self.user_list = User_RW.read_user()
+
+    def update_user(self):
+        User_RW.write_user(self.user_list)
+
+    def get_user_id(self, index):
+        return self.user_list[index]["user_id"]
+
+    def get_password(self, index):
+        return self.user_list[index]["password"]
+
+    def get_number(self, index):
+        return self.user_list[index]["number"]
+
+    def set_user_id(self, index, user_id):
+        self.user_list[index]["user_id"] = user_id
+
+    def set_password(self, index, password):
+        self.user_list[index]["password"] = password
+
+    def set_number(self, index, number):
+        self.user_list[index]["number"] = number
+
+    def user_finder(self, user_id):
+        for i in range(len(self.user_list)):
+            if (self.user_list[i]["user_id"] == user_id):
+                return i
+        return -1
+
+    def add_user(self, new_id, new_pass, new_num):
+        new_user = [{"user_id": new_id, "password": new_pass, "number": new_num}]
+        self.user_list = self.user_list + new_user
+        self.update_user()

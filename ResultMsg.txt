@@ -1,0 +1,61 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+#import SendingSMS
+
+class ResultMsg(object):
+    def setupUi(self, ResultMsgForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        self.init_timer()
+        ResultMsgForm.setObjectName("ResultMsgForm")
+        ResultMsgForm.resize(800, 480)
+        self.lbl_result = QtWidgets.QLabel(ResultMsgForm)
+        self.lbl_result.setGeometry(QtCore.QRect(0, 0, 800, 480))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_result.setFont(font)
+        self.lbl_result.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_result.setObjectName("lbl_result")
+        self.retranslateUi(ResultMsgForm)
+        QtCore.QMetaObject.connectSlotsByName(ResultMsgForm)
+
+    def retranslateUi(self, ResultMsgForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_result.setText(_translate("ThanksForm", "택배가 보관되었습니다.\n\n\n5초 후 로그인화면 으로 이동합니다."))
+
+    def init_timer(self):
+        self.sec = 0
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.timeout)
+        
+
+    def timeout(self):
+        self.sec = self.sec - 1
+        
+        if (self.sec > 0):
+            self.set_lbl_result()
+            self.timer.start(1000)
+            print("^")
+        elif (self.sec == 0):
+            self.timer.stop()
+            self.main_stacked_widget.update_data()
+            self.main_stacked_widget.logout()
+        else:
+            pass
+
+    def set_lbl_result(self):
+        if (self.result == 1):
+            self.lbl_result.setText("이용해주셔서 감사합니다.\n\n\n{0}초 후 로그인화면으로 이동합니 다.".format(self.sec))
+        else:
+            self.lbl_result.setText("물건이 정상적으로 보관되지 않았습니다.\n\n\n확인 후 다시 이용해주십시오.")
+
+    def to_result_msg(self, result, recever_id, box_num):
+        self.result = result
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+        if (self.result == 1):
+            self.sec = 5
+            self.set_lbl_result()
+            self.timer.start(1000)
+        else:
+            print("&")

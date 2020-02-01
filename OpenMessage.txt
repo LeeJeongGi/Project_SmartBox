@@ -1,0 +1,81 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+from datetime import datetime
+from PyQt5.QtSerialPort import *
+from PyQt5.QtCore import QIODevice
+
+class OpenMessage(object):
+    def setupUi(self, OpenMessageForm, main_stacked_widget, page_index):
+        self.page_index = page_index
+        self.main_stacked_widget = main_stacked_widget
+        OpenMessageForm.setObjectName("OpenMessageForm")
+        OpenMessageForm.resize(800, 480)
+        self.lbl_box_open = QtWidgets.QLabel(OpenMessageForm)
+        self.lbl_box_open.setGeometry(QtCore.QRect(0, 0, 800, 480))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_box_open.setFont(font)
+        self.lbl_box_open.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_box_open.setObjectName("lbl_box_open")
+        self.init_serialport()
+        self.retranslateUi(OpenMessageForm)
+        QtCore.QMetaObject.connectSlotsByName(OpenMessageForm)
+
+    def retranslateUi(self, OpenMessageForm):
+        _translate = QtCore.QCoreApplication.translate
+        self.lbl_box_open.setText(_translate("OpenMessageForm", "null번 보관함이 열렸습니다. \n\n\n완료 후 확인을 눌러주세요."))
+        print("#")
+    def success(self):
+        box_index = self.main_stacked_widget.find_box_by_number(self.box2open)
+        if (self.owner2set == ""):
+            self.main_stacked_widget.set_driver_num(box_index, "")
+            self.main_stacked_widget.set_arrival_time(box_index, "")
+            self.main_stacked_widget.set_owner(box_index, "")
+            print("()")
+        else:
+            self.main_stacked_widget.set_driver_num(box_index, self.main_stacked_widget.login_driver)
+            self.main_stacked_widget.set_arrival_time(box_index, str(datetime.now()))
+            self.main_stacked_widget.set_owner(self.main_stacked_widget.find_box_by_number(self.box2open),
+                                               self.owner2set)
+            
+#set owner
+        self.main_stacked_widget.ResultMsg_Ui.to_result_msg(1,self.owner2set,self.box2open)
+    def fail(self):
+        self.main_stacked_widget.ResultMsg_Ui.to_result_msg(-1,"", self.box2open)
+        print("*")
+    def set_open_message(self):
+        self.lbl_box_open.setText("{0}번 보관함이 열렸습니다. \n\n\n완료 후 확인 버튼을 눌러주세 요.".format(self.box2open))
+
+    def to_open_box(self, box2open, owner2set):
+        self.main_stacked_widget.setCurrentIndex(self.page_index)
+        self.result = b''
+        self.box2open = box2open
+        self.owner2set = owner2set
+        self.set_open_message()
+        print("!")
+        self.writedata()
+
+    def init_serialport(self):
+        self.ser = QSerialPort("/dev/ttyACM0")
+        self.ser.open(QIODevice.ReadWrite)
+        self.ser.setBaudRate(9600)
+        self.ser.setDataBits(self.ser.Data8)
+        self.ser.setStopBits(self.ser.OneStop)
+        self.ser.setFlowControl(self.ser.NoFlowControl)
+        self.ser.readyRead.connect(self.readinput)
+        self.input = b''
+        print("@")
+    def readinput(self):
+        self.input = self.ser.readAll()
+        print(self.input)
+        if (self.input == b'1'):
+            self.success()
+        else:
+            self.fail()
+            print("#")
+
+    def writedata(self):
+        data = b'1'
+        self.ser.write(data)
+        self.ser.waitForBytesWritten(100)
